@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c80oqjykyv7iy"]
+
+[ext_resource type="Script" path="res://food.gd" id="1_sddmg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3g3t"]
+load_path = "res://.godot/imported/roguelikeSheet_transparent.png-06ddb9ea3037764c15e98d7ee510ace2.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_setmd"]
+radius = 6.08276
+
+[node name="Food" type="Area2D" groups=["food"]]
+scale = Vector2(2.76, 2.76)
+collision_layer = 2
+script = ExtResource("1_sddmg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("CompressedTexture2D_d3g3t")
+region_enabled = true
+region_rect = Rect2(918, 255, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_setmd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
